@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap">
+    <style>
+        .container {
+          /* Adjust the margin or padding as needed to lower the game canvas below the header */
+          margin-top: 100px;
+        }
+        #gameCanvas {
+          border: 1px solid #000;
+          margin: 0 auto;
+          display: block;
+          background-color: #000;
+        }
+        /* Game over screen styles */
+        #gameOverScreen {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.8);
+          z-index: 999;
+          color: #fff;
+          font-size: 24px;
+          text-align: center;
+          padding-top: 100px;
+        }
+        body {
+          overflow: hidden;
+        }
+    
+        html, body {
+        height: 100%;
+        margin: 0;
+      }
+        
+        /* Score display styles */
+        #scoreDisplay {
+          font-size: 24px;
+          color: white;
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="navbar" id="navbar">
+                <ul>
+                    <li class="nav" id="home"><a href='index.html'>Home</a></li>
+                    <li class="nav"><a  href="about.html">About</a></li>
+                    <li class="nav"> <a href="work.html" >Work</a></li>
+                    <li class="nav"> <a href="contact.html" >Contact</a></li>
+                </ul>
+            </div>
+        </header>
+        <div id="scoreDisplay">Score: <span id="score">0</span></div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <!-- Game over screen -->
+        <div id="gameOverScreen">
+            <h1>Game Over</h1>
+            <p>Score: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()" style="margin-left: 228px;">Restart</button>
+        </div>
+        </div>
+    </div>
+  
+    <script>
+      var canvas = document.getElementById('gameCanvas');
+      var context = canvas.getContext('2d');
+      
+      var grid = 16;
+      var count = 0;
+      var score = 0; // Variable to store the score
+      var gameOverFlag = false; // Variable to track game over state
+        
+      var snake = {
+        x: 160,
+        y: 160,
+        
+        // snake velocity. moves one grid length every frame in either the x or y direction
+        dx: grid,
+        dy: 0,
+        
+        // keep track of all grids the snake body occupies
+        cells: [],
+        
+        // length of the snake. grows when eating an apple
+        maxCells: 4
+      };
+      var apple = {
+        x: 320,
+        y: 320
+      };
+      
+      // get random whole numbers in a specific range
+      // @see https://stackoverflow.com/a/1527820/2124254
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+  
+      // Function to display game over screen
+  function gameOver() {
+        gameOverFlag = true; // Set the game over flag
+        var finalScore = snake.maxCells - 4; // Calculate the final score
+        var gameOverScreen = document.getElementById('gameOverScreen');
+        var scoreDisplay = document.getElementById('finalScore');
+        scoreDisplay.textContent = finalScore; // Display the final score
+        gameOverScreen.style.display = 'block';
+      }
+  
+      // Restart game function
+      function restartGame() {
+        gameOverFlag = false; // Reset the game over flag
+        score = 0; // Reset the score
+        snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+  
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+  
+        var gameOverScreen = document.getElementById('gameOverScreen');
+        gameOverScreen.style.display = 'none';
+  
+        // Start the game loop again
+        requestAnimationFrame(loop);
+      }
+  
+      // game loop
+      function loop() {
+        if (gameOverFlag) return; // Stop the loop if the game is over
+  
+        requestAnimationFrame(loop);
+  
+        // slow game loop to 15 fps instead of 60 (60/15 = 4)
+        if (++count < 4) {
+          return;
+        }
+  
+        count = 0;
+        context.clearRect(0,0,canvas.width,canvas.height);
+      
+        // move snake by its velocity
+        snake.x += snake.dx;
+        snake.y += snake.dy;
+      
+        // wrap snake position horizontally on edge of screen
+        if (snake.x < 0) {
+          snake.x = canvas.width - grid;
+        }
+        else if (snake.x >= canvas.width) {
+          snake.x = 0;
+        }
+        
+        // wrap snake position vertically on edge of screen
+        if (snake.y < 0) {
+          snake.y = canvas.height - grid;
+        }
+        else if (snake.y >= canvas.height) {
+          snake.y = 0;
+        }
+      
+        // keep track of where snake has been. front of the array is always the head
+        snake.cells.unshift({x: snake.x, y: snake.y});
+      
+        // remove cells as we move away from them
+        if (snake.cells.length > snake.maxCells) {
+          snake.cells.pop();
+        }
+      
+        // draw apple
+        context.fillStyle = 'red';
+        context.fillRect(apple.x, apple.y, grid-1, grid-1);
+      
+        // draw snake one cell at a time
+        context.fillStyle = 'green';
+        snake.cells.forEach(function(cell, index) {
+          // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
+          context.fillRect(cell.x, cell.y, grid-1, grid-1);  
+        
+          // snake ate apple
+          if (cell.x === apple.x && cell.y === apple.y) {
+            snake.maxCells++;
+      
+            // Increment the score and update the display
+            score++;
+            document.getElementById('score').textContent = score;
+  
+            // canvas is 400x400 which is 25x25 grids 
+            apple.x = getRandomInt(0, 25) * grid;
+            apple.y = getRandomInt(0, 25) * grid;
+          }
+      
+          // check collision with all cells after this one (modified bubble sort)
+          for (var i = index + 1; i < snake.cells.length; i++) {
+            // snake occupies same space as a body part. reset game
+            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+              gameOver(); // Call the gameOver function
+              return; // Exit the loop to prevent the game from restarting instantly
+            }
+          }
+        });
+      }
+  
+      // listen to keyboard events to move the snake
+      document.addEventListener('keydown', function(e) {
+        // prevent snake from backtracking on itself by checking that it's 
+        // not already moving on the same axis (pressing left while moving
+        // left won't do anything, and pressing right while moving left
+        // shouldn't let you collide with your own body)
+        
+        // left arrow key or "A" key
+        if ((e.which === 37 || e.key === "a") && snake.dx === 0) {
+          snake.dx = -grid;
+          snake.dy = 0;
+        }
+        // up arrow key or "W" key
+        else if ((e.which === 38 || e.key === "w") && snake.dy === 0) {
+          snake.dy = -grid;
+          snake.dx = 0;
+        }
+        // right arrow key or "D" key
+        else if ((e.which === 39 || e.key === "d") && snake.dx === 0) {
+          snake.dx = grid;
+          snake.dy = 0;
+        }
+        // down arrow key or "S" key
+        else if ((e.which === 40 || e.key === "s") && snake.dy === 0) {
+          snake.dy = grid;
+          snake.dx = 0;
+        }
+      });
+  
+      // Start the game
+      requestAnimationFrame(loop);
+    </script>
+    <footer>
+        <p>My socials</p>
+        <div class="social-media-icons">
+            <a href="https://www.facebook.com" class="social-icon"><img src="images/fb.png" height=100vh width="100vw"></a>
+            <a href="https://www.instagram.com" class="social-icon"><img src="images/ig.png"height=100vh width="100vw"></a>
+            <a href="https://www.twitter.com" class="social-icon"><img src="images/tt.png"height=100vh width="100vw"></a>
+        </div>
+        <p>&copy; 2023 Reeve Tan. All rights reserved. Desgined by Reeve Tan</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

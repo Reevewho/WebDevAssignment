@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap">
+</head>
+<body>
+    <header>
+        <div class="navbar" id="navbar">
+            <ul>
+                <li class="nav" id="home"><a href='index.html'>Home</a></li>
+                <li class="nav"><a  href="about.html">About</a></li>
+                <li class="nav"> <a href="work.html" >Work</a></li>
+                <li class="nav"> <a href="contact.html" >Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <br><br><br><br><br>
+    <div>
+        <h1 class="goldword">Contact Me</h1>
+    </div>
+    <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.660300937885!2d103.84641322585499!3d1.3804780114748028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da16e96db0a1ab%3A0x3d0be54fbbd6e1cd!2sSingapore%20Institute%20of%20Technology%20(SIT%40NYP)!5e0!3m2!1sen!2ssg!4v1691017495697!5m2!1sen!2ssg" width="1000" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="contact-section">
+        <div class="address">
+            <h2>Address</h2>
+            <p>172 Ang Mo Kio Ave 8, Singapore 567739</p>
+        </div>
+
+        <div class="customer-service">
+            <h2>Customer Service</h2>
+            <p>Email: contactNYP@nyp.edu.sg<br>
+               Phone: +65 6451 5115<br>
+               Hours: Monday to Friday, 9am - 5pm</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form">
+            <h2>Type what you want to tell me!</h2>
+            <form action="response.html" method="get" onsubmit="response()">
+                <div class="group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required placeholder="Your Name"> 
+                </div>
+                <div class="group">
+                    <label for="num">Phone Number:</label>
+                    <input type="tel" id="num" required pattern="[0-9]{8}" placeholder="12345678" class="align"> 
+                </div>
+                <div class="group">
+                    <label for="msg">Enter your message:</label>
+                    <textarea id="msg" rows="8" cols="50" required></textarea>
+                </div>
+                <div class="group">
+                    <button class="button-64" role="button" type="submit"><span class="text">Submit</span></button>
+                </div>
+            </form>
+        </div>
+    <footer>
+        <p>My socials</p>
+        <div class="social-media-icons">
+            <a href="https://www.facebook.com" class="social-icon"><img src="images/fb.png" height=100vh width="100vw"></a>
+            <a href="https://www.instagram.com" class="social-icon"><img src="images/ig.png"height=100vh width="100vw"></a>
+            <a href="https://www.twitter.com" class="social-icon"><img src="images/tt.png"height=100vh width="100vw"></a>
+        </div>
+        <p>&copy; 2023 Reeve Tan. All rights reserved. Desgined by Reeve Tan</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
