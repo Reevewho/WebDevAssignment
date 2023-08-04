@@ -97,35 +97,75 @@ function showresponse(){
 }
 
 let imageUrls = [
-    "images/rezeroln.png",
-    "images/NGNLln.png",
-    "images/konosubaln.jpg",
-    "images/Coteln.png",
-    "images/oregairuln.png",
-    "images/chitoseln.png"
+    "rezeroln.png",
+    "NGNLln.png",
+    "konosubaln.jpg",
+    "Coteln.png",
+    "oregairuln.png",
+    "chitoseln.png"
     // Add more image filenames as needed
   ];
-  
-  function addImagesToContainer() {
+
+function addImagesToContainer() {
     const container = document.querySelector(".image-container");
-  
-    imageUrls.forEach((url) => {
+    container.innerHTML = ""; // Clear existing content before adding images
+
+    // Increase the number of duplications to make the loop happen faster
+    const numberOfDuplications = 5; // You can adjust this value as needed
+    const duplicateImageUrls = [];
+    for (let i = 0; i < numberOfDuplications; i++) {
+      duplicateImageUrls.push(...imageUrls);
+    }
+
+    duplicateImageUrls.forEach((url) => {
       const imageUrl = `images/${url}`; // Assuming images are in a folder named 'images'
       const div = document.createElement("div");
       div.style.backgroundImage = `url(${imageUrl})`;
       div.addEventListener("click", () => openModal(imageUrl)); // Add click event listener
       container.appendChild(div);
     });
+
+    // Calculate the total width of images and set it as the container width
+    const images = container.children;
+    const totalImageWidth = images.length * (images[0].clientWidth + 10); // Width of each image + margin
+    container.style.width = `${totalImageWidth}px`;
+
+    // Start the animation
+    moveImages();
   }
   
+  let currentX = 0;
+
+  function moveImages() {
+    const container = document.querySelector(".image-container");
+    const containerWidth = container.clientWidth;
+
+    // Calculate the duration based on the total width of images and the container width
+    const imageCount = imageUrls.length;
+    const totalImageWidth = imageCount * (containerWidth / 4); // Display 4 images at a time
+    const duration = (totalImageWidth - containerWidth) * 11; // Adjust '10' to control the animation speed
+
+    // Calculate the distance to move based on time
+    currentX = (currentX - 1) % totalImageWidth;
+    if (currentX === -(totalImageWidth - containerWidth)) {
+      currentX = 0;
+    }
+
+    // Move the container
+    container.style.transform = `translateX(${currentX}px)`;
+
+    // Request the next frame
+    requestAnimationFrame(moveImages);
+  }
+
   function openModal(imageUrl) {
     const modal = document.getElementById("modal");
     const modalImage = document.getElementById("modalImage");
     const closeBtn = document.getElementById("close");
-  
+
     modalImage.style.backgroundImage = `url(${imageUrl})`;
     modal.style.display = "block";
-  
+
     closeBtn.onclick = () => closeModal();
     modal.onclick = (event) => {
       if (event.target === modal) {
@@ -133,10 +173,10 @@ let imageUrls = [
       }
     };
   }
-  
+
   function closeModal() {
     const modal = document.getElementById("modal");
     modal.style.display = "none";
   }
-  
+
   addImagesToContainer();
