@@ -22,11 +22,12 @@
     </div>
     <div class="text">
         <h2 class="goldword">Hi, I'm Reeve. I'm a Year 1 student in NYP Common IT programme</h2>
-        <h3>My hobbies are reading and playing video games,</h3>
+        <h3>My hobbies are reading light novels and playing video games,</h3>
         <h3>and I yearn to one day be a game developer</h3>
         <br>
         <h2 class="goldword">Below are some of the games that I play/have completed</h2>
     </div>
+    <div class="slideshow"></div>
     <div class="container" style="max-width:70%">
         <div class="mySlides">
           <div class="numbertext">1 / 6</div>
@@ -61,7 +62,7 @@
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
       
-        <div class="caption-container">
+        <div class="caption-container" style="width: 100%;">
           <p id="caption">Hello</p>
         </div>
       
@@ -70,7 +71,7 @@
             <img class="demo cursor" src="images/Val.jpg" style="width:100%" onclick="currentSlide(1)" alt="Valorant(Ascendant Peak)">
           </div>
           <div class="column">
-            <img class="demo cursor" src="images/Hsr.jpg" style="width: 100%" onclick="currentSlide(2)" alt="Honkai Star Rail">
+            <img class="demo cursor" src="images/Hsr.jpg" style="width:100%" onclick="currentSlide(2)" alt="Honkai Star Rail">
           </div>
           <div class="column">
             <img class="demo cursor" src="images/Mhw.jpg" style="width:100%" onclick="currentSlide(3)" alt="Monster Hunter Franchise">
@@ -86,14 +87,16 @@
           </div>
         </div>
       </div>
-      <div class="center-container">
-        <div class="videocontainer">
-            <iframe width="800" height="450" src="https://www.youtube.com/embed/wKduUdwXLt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="image-container">
+        <!-- Images will be added dynamically by JavaScript -->
+      </div>
+    
+      <div class="modal" id="modal">
+        <div class="modal-content" id="modalContent">
+          <span class="close" id="close">&times;</span>
+          <div id="modalImage"></div>
         </div>
-        <div class="vidtext">
-            <h2 class="goldword">What i listen to, to fall asleep</h2>
-            <p>Very ambient and relaxing. Am unable to fall asleep without playing it next to me every night</p>
-        </div>
+      </div>
         <footer>
             <p>My socials</p>
             <div class="social-media-icons">

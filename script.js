@@ -35,17 +35,7 @@ if (isOnHomePage()) {
     const navbar = document.getElementById("navbar");
     navbar.classList.add("navbar-solid");
 }
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
+    
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("mySlides");
@@ -64,6 +54,17 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex - 1].alt;
   }
+
+  let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
     
 //form input storage
 function response() {
@@ -95,7 +96,47 @@ function showresponse(){
     document.getElementById("msg-response").innerText = newMsg;
 }
 
-
-
-
-
+let imageUrls = [
+    "images/rezeroln.png",
+    "images/NGNLln.png",
+    "images/konosubaln.jpg",
+    "images/Coteln.png",
+    "images/oregairuln.png",
+    "images/chitoseln.png"
+    // Add more image filenames as needed
+  ];
+  
+  function addImagesToContainer() {
+    const container = document.querySelector(".image-container");
+  
+    imageUrls.forEach((url) => {
+      const imageUrl = `images/${url}`; // Assuming images are in a folder named 'images'
+      const div = document.createElement("div");
+      div.style.backgroundImage = `url(${imageUrl})`;
+      div.addEventListener("click", () => openModal(imageUrl)); // Add click event listener
+      container.appendChild(div);
+    });
+  }
+  
+  function openModal(imageUrl) {
+    const modal = document.getElementById("modal");
+    const modalImage = document.getElementById("modalImage");
+    const closeBtn = document.getElementById("close");
+  
+    modalImage.style.backgroundImage = `url(${imageUrl})`;
+    modal.style.display = "block";
+  
+    closeBtn.onclick = () => closeModal();
+    modal.onclick = (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  }
+  
+  function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.style.display = "none";
+  }
+  
+  addImagesToContainer();

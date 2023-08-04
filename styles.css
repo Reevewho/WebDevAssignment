@@ -47,14 +47,14 @@
 .navbar a:hover {
   font-size: 1.5em;
  /* Increase the font size on hover */
-  color: #D4AF37;
+  color: #36454F;
 }
 .navbar-solid .nav a {
   color: #D4AF37;
  /* Font color when the navbar is solid */
 }
 /* Media queries (you can adjust as needed) */
-@media (max-width: 768px),(max-width: 480px) {
+@media (max-width: 768px),(max-width: 340px) {
   .navbar ul {
       list-style-type: none;
       margin: 0;
@@ -69,7 +69,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
   width: 100%;
   height: 100vh;
@@ -164,9 +163,7 @@ body {
   text-align: center;
   transform: translateY(150px);
  /* Adjust this value to move the element down by desired pixels */
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
+ }
 /* Container for centering */
 .center-container {
   display: flex;
@@ -180,7 +177,7 @@ body {
  /* Center the container horizontally */
   padding: 20px;
  /* Add some spacing around the items */
-  margin-top: 100px;
+  margin-top: 70px;
 }
 /* Video container */
 .video-container {
@@ -211,7 +208,6 @@ button {
   color: whitesmoke;
   border: 2px whitesmoke solid;
   border-radius: 4px;
-  text-transform: uppercase;
   outline: 0;
   overflow:hidden;
   background: none;
@@ -248,6 +244,9 @@ a:visited {
 .fill:hover:before {
   top: 0;
 }
+.button {
+  text-align: center;
+}
 #learnmore {
   margin-left: 286px;
 }
@@ -272,7 +271,7 @@ footer {
   display: inline-block;
   vertical-align: middle;
   overflow: hidden;
- /* To hide the expanded part when not hovering */
+  /* To hide the expanded part when not hovering */
   transition: transform 0.3s;
  /* Smooth transition for the expansion */
 }
@@ -301,7 +300,7 @@ img {
 .container {
   position: relative;
   margin: 0 auto;
-  max-width: 70%;
+  max-width: 60%;
 }
 /* Hide the images by default */
 .mySlides {
@@ -340,6 +339,7 @@ img {
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  color: #D4AF37;
 }
 /* Number text (1/3 etc) */
 .numbertext {
@@ -353,8 +353,8 @@ img {
 .caption-container {
   text-align: center;
   background-color: #222;
-  padding: 2px 16px;
   color: white;
+  padding: 2px 16px;
 }
 .row:after {
   content: "";
@@ -474,4 +474,59 @@ table.GeneratedTable td, table.GeneratedTable th {
 }
 table.GeneratedTable thead {
   background-color: #ecbf36;
+}
+
+/* Add styles for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.close {
+  color: #000;
+  font-size: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.image-container {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: moveImages 10s linear infinite;
+}
+
+.image-container div {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  cursor: pointer;
+  background-size: cover;
+}
+@keyframes moveImages {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
