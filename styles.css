@@ -4,7 +4,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px; /* Adjust the height of the navbar as needed */
+  height: 60px;
+ /* Adjust the height of the navbar as needed */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,55 +15,56 @@
   font-family: "Roboto", sans-serif;
   font-weight: 800;
 }
-
 .navbar-solid {
-  background-color: #36454F; /* Background color when scrolling down */
-  color: #000000; /* Font color when scrolling down */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow when scrolling down */
+  background-color: #36454F;
+ /* Background color when scrolling down */
+  color: #000000;
+ /* Font color when scrolling down */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ /* Add a subtle shadow when scrolling down */
 }
-
 .navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
 }
-
 .nav {
   padding: 0 20px;
   font-size: 1.6em;
-  height: 60px; /* Adjust the height of the navbar as needed */
-  line-height: 60px; /* Set the line-height to vertically center the text */
+  height: 60px;
+ /* Adjust the height of the navbar as needed */
+  line-height: 60px;
+ /* Set the line-height to vertically center the text */
 }
-
 .navbar a {
   text-decoration: none;
-  color: #36454F; /* Font color when the navbar is transparent */
-  transition: font-size 0.3s; /* Add a smooth transition for font size changes */
+  color: #36454F;
+ /* Font color when the navbar is transparent */
+  transition: font-size 0.3s;
+ /* Add a smooth transition for font size changes */
 }
-
 .navbar a:hover {
-  font-size: 1.5em; /* Increase the font size on hover */
+  font-size: 1.5em;
+ /* Increase the font size on hover */
   color: #D4AF37;
 }
-
 .navbar-solid .nav a {
-  color: #D4AF37; /* Font color when the navbar is solid */
+  color: #D4AF37;
+ /* Font color when the navbar is solid */
 }
-
 /* Media queries (you can adjust as needed) */
 @media (max-width: 768px),(max-width: 480px) {
   .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display:flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+ }
 }
-
 .heroimg {
   display: flex;
   justify-content: center;
@@ -70,12 +72,12 @@
   flex-direction: column;
   text-align: center;
   width: 100%;
-  height: 100vh; /* if you don't want it to take up the full screen, reduce this number */
+  height: 100vh;
+ /* if you don't want it to take up the full screen, reduce this number */
   overflow: hidden;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimg.jpeg) no-repeat center center scroll;
   background-size: cover !important;
 }
-
 #heroimgh1 {
   font-style: normal;
   font-weight: bold;
@@ -86,21 +88,23 @@
   text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
   margin-bottom: 30px;
 }
-
 #heroimgwords {
   text-align: center;
-  opacity: 0; /* Initially set opacity to 0 to make it invisible */
-  transform: translateY(-20px); /* Move it up by 20 pixels to hide it above the viewport */
-  animation: fadeInUp 2s forwards; /* Apply the fadeInUp animation for 2 second */
+  opacity: 0;
+ /* Initially set opacity to 0 to make it invisible */
+  transform: translateY(-20px);
+ /* Move it up by 20 pixels to hide it above the viewport */
+  animation: fadeInUp 2s forwards;
+ /* Apply the fadeInUp animation for 2 second */
 }
-
 @keyframes fadeInUp {
   to {
-      opacity: 1; /* Fade in the element to full opacity */
-      transform: translateY(0); /* Move the element to its original position */
-  }
+      opacity: 1;
+     /* Fade in the element to full opacity */
+      transform: translateY(0);
+     /* Move the element to its original position */
+ }
 }
-
 body {
   margin: 0;
   padding: 0;
@@ -110,89 +114,90 @@ body {
   font-weight: 100;
   color: white;
 }
-
 .followup1 {
   text-align: center;
   height: 200px;
 }
-
 .goldword {
   color: #D4AF37;
 }
-
 .column-container {
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center the columns horizontally */
+  display: flex;
+ /* Use flexbox */
+  justify-content: center;
+ /* Center the columns horizontally */
   height: 250px;
 }
-
 /* Individual column */
 .followup2 {
-  flex: 1; /* Distribute available space equally among columns */
-  max-width: 300px; /* Adjust the max-width as needed */
-  margin: 0 10px; /* Add some space between columns */
+  flex: 1;
+ /* Distribute available space equally among columns */
+  max-width: 300px;
+ /* Adjust the max-width as needed */
+  margin: 0 10px;
+ /* Add some space between columns */
   text-align: center;
 }
-
 .parallax {
-  /* The image used */
+ /* The image used */
   background-image: url(images/Parallax5.jpg);
-
-  /* Set a specific height */
-  min-height: 420px; 
-
-  /* Create the parallax scrolling effect */
+ /* Set a specific height */
+  min-height: 420px;
+ /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .parallax2 {
-  /* The image used */
+ /* The image used */
   background-image: url(images/Parallax5.png);
-
-  /* Set a specific height */
-  min-height: 420px; 
-
-  /* Create the parallax scrolling effect */
+ /* Set a specific height */
+  min-height: 420px;
+ /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .followup3 {
   text-align: center;
-  transform: translateY(150px); /* Adjust this value to move the element down by desired pixels */
+  transform: translateY(150px);
+ /* Adjust this value to move the element down by desired pixels */
   margin-top: 50px;
   margin-bottom: 50px;
 }
-
 /* Container for centering */
 .center-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Allow items to wrap when screen is small */
-  max-width: 1200px; /* Adjust the max-width as needed */
-  margin: 0 auto; /* Center the container horizontally */
-  padding: 20px; /* Add some spacing around the items */
+  flex-wrap: wrap;
+ /* Allow items to wrap when screen is small */
+  max-width: 1200px;
+ /* Adjust the max-width as needed */
+  margin: 0 auto;
+ /* Center the container horizontally */
+  padding: 20px;
+ /* Add some spacing around the items */
   margin-top: 100px;
 }
-
 /* Video container */
 .video-container {
-  flex: 1; /* Take up available space */
-  max-width: 800px; /* Adjust the max-width as needed */
-  margin-right: 20px; /* Add some spacing between video and text */
+  flex: 1;
+ /* Take up available space */
+  max-width: 800px;
+ /* Adjust the max-width as needed */
+  margin-right: 20px;
+ /* Add some spacing between video and text */
 }
 /* Text content */
 .vidtext {
-  flex: 1; /* Take up available space */
-  max-width: 400px; /* Adjust the max-width as needed */
+  flex: 1;
+ /* Take up available space */
+  max-width: 400px;
+ /* Adjust the max-width as needed */
 }
-
 button {
   position: relative;
   display:block;
@@ -212,28 +217,24 @@ button {
   background: none;
   z-index: 1;
   cursor: pointer;
-  transition:         0.08s ease-in;
-  -o-transition:      0.08s ease-in;
-  -ms-transition:     0.08s ease-in;
-  -moz-transition:    0.08s ease-in;
+  transition: 0.08s ease-in;
+  -o-transition: 0.08s ease-in;
+  -ms-transition: 0.08s ease-in;
+  -moz-transition: 0.08s ease-in;
   -webkit-transition: 0.08s ease-in;
   text-align: center;
 }
-
 a {
   text-decoration: none;
   color: white;
 }
-
-a:visited { 
+a:visited {
   text-decoration: none;
-  color: white; 
- }
-
+  color: white;
+}
 .fill:hover {
   color: #36454F;
 }
-
 .fill:before {
   content: "";
   position: absolute;
@@ -244,19 +245,15 @@ a:visited {
   top: 100%;
   z-index: -1;
 }
-
 .fill:hover:before {
   top: 0;
 }
-
 #learnmore {
   margin-left: 286px;
 }
-
 #viewmore {
   margin-left: 877px;
 }
-
 footer {
   text-align: center;
   margin-top: auto;
@@ -264,67 +261,58 @@ footer {
   color: white;
   padding: 20px;
 }
-
 .social-media-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
-
 .social-icon {
   margin: 0 10px;
   display: inline-block;
   vertical-align: middle;
-  overflow: hidden; /* To hide the expanded part when not hovering */
-  transition: transform 0.3s; /* Smooth transition for the expansion */
+  overflow: hidden;
+ /* To hide the expanded part when not hovering */
+  transition: transform 0.3s;
+ /* Smooth transition for the expansion */
 }
-
 .social-icon img {
   height: 70px;
   width: 70px;
 }
-
 .social-icon:hover {
-  transform: scale(1.2); /* Increase the scale to 1.2 on hover */
+  transform: scale(1.2);
+ /* Increase the scale to 1.2 on hover */
 }
-
 * {
   box-sizing: border-box;
   align-items: center;
   text-align: center;
 }
-
 .text {
   text-align: center;
   margin: 50px 0;
   padding: 20px;
 }
-
 img {
   vertical-align: middle;
 }
-
 /* Position the image container (needed to position the left and right arrows) */
 .container {
   position: relative;
   margin: 0 auto;
   max-width: 70%;
 }
-
 /* Hide the images by default */
 .mySlides {
   display: none;
 }
-
 /* Add a pointer when hovering over the thumbnail images */
 .cursor {
   cursor: pointer;
 }
-
 /* Next & previous buttons */
-.prev,
-.next {
+.prev, .next {
   cursor: pointer;
   position: absolute;
   top: 40%;
@@ -338,25 +326,21 @@ img {
   user-select: none;
   -webkit-user-select: none;
 }
-
 /* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-
 /* Position the "prev button" to the left */
 .prev {
-  left: 0; /* Set the left position to 0 */
+  left: 0;
+ /* Set the left position to 0 */
   border-radius: 3px 0 0 3px;
 }
-
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
+.prev:hover, .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
@@ -365,7 +349,6 @@ img {
   position: absolute;
   top: 0;
 }
-
 /* Container for image text */
 .caption-container {
   text-align: center;
@@ -373,29 +356,23 @@ img {
   padding: 2px 16px;
   color: white;
 }
-
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
-
 /* Six columns side by side */
 .column {
   float: left;
   width: 16.66%;
 }
-
 /* Add a transparency effect for thumnbail images */
 .demo {
   opacity: 0.6;
 }
-
-.active,
-.demo:hover {
+.active, .demo:hover {
   opacity: 1;
 }
-
 .contact-section {
   display: flex;
   justify-content: space-around;
@@ -405,25 +382,18 @@ img {
   background-color: #36454F;
   box-shadow: 0 0 5px #D4AF37;
 }
-
-.address,
-.customer-service {
+.address, .customer-service {
   text-align: center;
   padding: 20px;
 }
-
-.address h2,
-.customer-service h2 {
+.address h2, .customer-service h2 {
   color: #D4AF37;
   font-size: 24px;
 }
-
-.address p,
-.customer-service p {
+.address p, .customer-service p {
   color: white;
   font-size: 16px;
 }
-
 .container {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -431,59 +401,47 @@ img {
   margin: 0 auto;
   padding: 20px;
 }
-
 h1 {
   text-align: center;
 }
-
 .container {
   margin: 10vh auto 20vh;
   max-width: 600px;
 }
-
 .form {
   padding: 20px;
   border: 1px solid #18c2fb;
   background-color: #ffffff;
   color: #000000;
 }
-
 .form h2 {
   text-align: center;
   color: #18c2fb;
   margin-top: 0;
 }
-
 .group {
   margin-bottom: 20px;
 }
-
 label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
 }
-
-input[type="text"],
-input[type="tel"],
-textarea {
+input[type="text"], input[type="tel"], textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
 }
-
 @media (max-width: 768px) {
   .form {
-    overflow-y: scroll;
-  }
-
+      overflow-y: scroll;
+ }
   .group {
-    margin-bottom: 10px;
-  }
+      margin-bottom: 10px;
+ }
 }
-
 .button-64 {
   background-color: #18c2fb;
   border: none;
@@ -496,7 +454,24 @@ textarea {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .button-64:hover {
   background-color: #0e9bf0;
+}
+table.GeneratedTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #ddbb31;
+  border-style: solid;
+  color: #000000;
+}
+table.GeneratedTable td, table.GeneratedTable th {
+  border-width: 2px;
+  border-color: #ddbb31;
+  border-style: solid;
+  padding: 3px;
+}
+table.GeneratedTable thead {
+  background-color: #ecbf36;
 }
