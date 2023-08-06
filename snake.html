@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap">
-    <style>
+      <style>
         .container {
           /* Adjust the margin or padding as needed to lower the game canvas below the header */
-          margin-top: 100px;
+          margin-top: 10vh;
         }
         #gameCanvas {
           border: 1px solid #000;
@@ -24,31 +24,34 @@
           width: 100%;
           height: 100%;
           background-color: rgba(0, 0, 0, 0.8);
-          z-index: 999;
           color: #fff;
           font-size: 24px;
           text-align: center;
-          padding-top: 100px;
+          padding-top: 10vh
         }
         body {
           overflow: hidden;
         }
     
         html, body {
-        height: 100%;
         margin: 0;
-      }
+        }
         
         /* Score display styles */
         #scoreDisplay {
           font-size: 24px;
           color: white;
-          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .gamecontainer {
+        margin-top: 10vh;
         }
       </style>
 </head>
 <body>
-    <div class="container">
+    <div class="gamecontainer">
         <header>
             <div class="navbar" id="navbar">
                 <ul>
@@ -65,7 +68,7 @@
         <div id="gameOverScreen">
             <h1>Game Over</h1>
             <p>Score: <span id="finalScore">0</span></p>
-            <button onclick="restartGame()" style="margin-left: 228px;">Restart</button>
+            <button onclick="restartGame()" style="margin-left: auto; margin-right: auto;">Restart</button>
         </div>
         </div>
     </div>
@@ -103,9 +106,9 @@
       function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
       }
-  
+    
       // Function to display game over screen
-  function gameOver() {
+      function gameOver() {
         gameOverFlag = true; // Set the game over flag
         var finalScore = snake.maxCells - 4; // Calculate the final score
         var gameOverScreen = document.getElementById('gameOverScreen');
@@ -113,7 +116,7 @@
         scoreDisplay.textContent = finalScore; // Display the final score
         gameOverScreen.style.display = 'block';
       }
-  
+
       // Restart game function
       function restartGame() {
         gameOverFlag = false; // Reset the game over flag
@@ -124,28 +127,28 @@
         snake.maxCells = 4;
         snake.dx = grid;
         snake.dy = 0;
-  
+    
         apple.x = getRandomInt(0, 25) * grid;
         apple.y = getRandomInt(0, 25) * grid;
-  
+    
         var gameOverScreen = document.getElementById('gameOverScreen');
         gameOverScreen.style.display = 'none';
-  
+    
         // Start the game loop again
         requestAnimationFrame(loop);
       }
-  
+    
       // game loop
       function loop() {
         if (gameOverFlag) return; // Stop the loop if the game is over
-  
+    
         requestAnimationFrame(loop);
-  
+    
         // slow game loop to 15 fps instead of 60 (60/15 = 4)
         if (++count < 4) {
           return;
         }
-  
+    
         count = 0;
         context.clearRect(0,0,canvas.width,canvas.height);
       
@@ -190,11 +193,11 @@
           // snake ate apple
           if (cell.x === apple.x && cell.y === apple.y) {
             snake.maxCells++;
-      
+    
             // Increment the score and update the display
             score++;
             document.getElementById('score').textContent = score;
-  
+    
             // canvas is 400x400 which is 25x25 grids 
             apple.x = getRandomInt(0, 25) * grid;
             apple.y = getRandomInt(0, 25) * grid;
@@ -210,7 +213,7 @@
           }
         });
       }
-  
+    
       // listen to keyboard events to move the snake
       document.addEventListener('keydown', function(e) {
         // prevent snake from backtracking on itself by checking that it's 
@@ -239,19 +242,62 @@
           snake.dx = 0;
         }
       });
-  
+    
+      // Touch controls
+      let touching = false;
+    
+      document.addEventListener('touchstart', (e) => {
+        touching = true;
+        handleTouch(e);
+      });
+    
+      document.addEventListener('touchmove', (e) => {
+        if (touching) {
+          e.preventDefault(); // Prevent default touch scroll behavior
+          handleTouch(e);
+        }
+      });
+    
+      document.addEventListener('touchend', () => {
+        touching = false;
+      });
+    
+      function handleTouch(e) {
+        const touchX = e.touches[0].clientX;
+        const touchY = e.touches[0].clientY;
+        const canvasRect = canvas.getBoundingClientRect(); // Get canvas position
+        const dx = touchX - canvasRect.left - snake.x;
+        const dy = touchY - canvasRect.top - snake.y;
+    
+        // Determine the direction of the touch gesture
+        if (Math.abs(dx) > Math.abs(dy)) {
+          // Horizontal swipe
+          if (dx > 0 && snake.dx !== -grid) {
+            // Right swipe (and not turning left)
+            snake.dx = grid;
+            snake.dy = 0;
+          } else if (dx < 0 && snake.dx !== grid) {
+            // Left swipe (and not turning right)
+            snake.dx = -grid;
+            snake.dy = 0;
+          }
+        } else {
+          // Vertical swipe
+          if (dy > 0 && snake.dy !== -grid) {
+            // Down swipe (and not turning up)
+            snake.dy = grid;
+            snake.dx = 0;
+          } else if (dy < 0 && snake.dy !== grid) {
+            // Up swipe (and not turning down)
+            snake.dy = -grid;
+            snake.dx = 0;
+          }
+        }
+      }
+    
       // Start the game
       requestAnimationFrame(loop);
     </script>
-    <footer>
-        <p>My socials</p>
-        <div class="social-media-icons">
-            <a href="https://www.facebook.com" class="social-icon"><img src="images/fb.png" height=100vh width="100vw"></a>
-            <a href="https://www.instagram.com" class="social-icon"><img src="images/ig.png"height=100vh width="100vw"></a>
-            <a href="https://www.twitter.com" class="social-icon"><img src="images/tt.png"height=100vh width="100vw"></a>
-        </div>
-        <p>&copy; 2023 Reeve Tan. All rights reserved. Designed by Reeve Tan</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>

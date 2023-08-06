@@ -10,7 +10,7 @@
         <div class="navbar" id="navbar">
             <ul>
                 <li class="nav" id="home"><a href='index.html'>Home</a></li>
-                <li class="nav"><a  href="about.html">About</a></li>
+                <li class="nav"> <a href="about.html">About</a></li>
                 <li class="nav"> <a href="work.html" >Work</a></li>
                 <li class="nav"> <a href="contact.html" >Contact</a></li>
             </ul>
@@ -22,78 +22,84 @@
     </div>
     <div class="text">
         <h2 class="goldword">Hi, I'm Reeve. I'm a Year 1 student in NYP Common IT programme</h2>
-        <h3>My hobbies are reading light novels and playing video games,</h3>
-        <h3>and I yearn to one day be a game developer</h3>
-        <br>
-        <h2 class="goldword">Below are some of the Games that I play/have completed</h2>
-        <h2>And some of my favourite Light Novels</h2>
+        <h2>Learn more about me!</h2>
     </div>
-    <div class="slideshow">
-    <div class="container" style="max-width:70%">
-        <div class="mySlides">
-          <div class="numbertext">1 / 6</div>
-          <img src="images/Val.jpg" style="width:80%">
+    <div class="aboutme">
+      <table border="1">
+        <tr>
+          <td>Education Timeline</td>
+          <td>Hobbies</td>
+          <td>CCA's I was in</td>
+          <td>Work Experience</td>
+        </tr>
+        <tr>
+          <td class="col">
+            Ahmad Ibrahim Primary School (2012-2018) <br>
+            Canberra Secondary School (2018-2021)<br>
+            Nanyang Polytechnic (2021-Present)
+          </td>
+          <td class="col">
+            Playing video games<br>
+            Reading Books<br>
+          </td>
+          <td class="col">
+            Art Club (Pri School)<br>
+            NCC (SEA) (Sec School)<br>
+            SIT Club (Poly)
+          </td>
+          <td class="col">
+            Worked Part time at Redmart for a month
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel-slider">
+        <div class="slide">
+          <img src="images/Val.jpg" alt="Image 1">
+          <div class="caption">FPS such as Valorant,CS:GO,Apex Legends</div>
         </div>
-      
-        <div class="mySlides">
-          <div class="numbertext">2 / 6</div>
-          <img src="images/Hsr.jpg" style="width:80%">
+        <div class="slide">
+          <img src="images/Mhw.jpg" alt="Image 2">
+          <div class="caption">Action RPGs such as the Monster Hunter Franchise</div>
         </div>
-      
-        <div class="mySlides">
-          <div class="numbertext">3 / 6</div>
-          <img src="images/Mhw.jpg" style="width: 80%">
-        </div> 
-          
-        <div class="mySlides">
-          <div class="numbertext">4 / 6</div>
-          <img src="images/Eldenring.jpg" style="width:80%">
+        <div class="slide">
+          <img src="images/Eldenring.jpg" alt="Image 3">
+          <div class="caption">Soulslike games such as Elden Ring and Nioh2 </div>
         </div>
-      
-        <div class="mySlides">
-          <div class="numbertext">5 / 6</div>
-          <img src="images/Hollowknight.jpg" style="width:80%">
+        <div class="slide">
+          <img src="images/Hsr.jpg" alt="Image 4">
+          <div class="caption">Turn Based RPGs such as Persona 5, Pokemon and Honkai:Star Rail</div>
         </div>
-          
-        <div class="mySlides">
-          <div class="numbertext">6 / 6</div>
-          <img src="images/Apex.jpeg" style ="width:80%">
+        <div class="slide">
+          <img src="images/Hollowknight.jpg" alt="Image 5">
+          <div class="caption">Platforming games such as Mario, Hollow Knight and JumpKing</div>
         </div>
-          
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-      
-        <div class="caption-container" style="width: 100%;">
-          <p id="caption">Hello</p>
+        <div class="slide">
+          <img src="images/Minecraft.jpg" alt="Image 6">
+          <div class="caption">Sandbox games like Minecraft and Terraria</div>
         </div>
-      
-        <div class="row">
-          <div class="column">
-            <img class="demo cursor" src="images/Val.jpg" style="width:100%" onclick="currentSlide(1)" alt="Valorant">
-          </div>
-          <div class="column">
-            <img class="demo cursor" src="images/Hsr.jpg" style="width:100%" onclick="currentSlide(2)" alt="Honkai Star Rail">
-          </div>
-          <div class="column">
-            <img class="demo cursor" src="images/Mhw.jpg" style="width:100%" onclick="currentSlide(3)" alt="Monster Hunter Franchise">
-          </div>
-          <div class="column">
-            <img class="demo cursor" src="images/Eldenring.jpg" style="width:100%" onclick="currentSlide(4)" alt="Soulsborne series">
-          </div>
-          <div class="column">
-            <img class="demo cursor" src="images/Hollowknight.jpg" style="width:100%" onclick="currentSlide(5)" alt="Platformers">
-          </div>  
-          <div class="column">
-            <img class="demo cursor" src="images/Apex.jpeg" style="width:100%" onclick="currentSlide(6)" alt="Apex Legends">
-          </div>
-        </div>
-      </div>
-      <div class="imgcontainer">
-        <div class="image-container">
-          <!-- Images will be added dynamically by JavaScript -->
-        </div>
+        <!-- Add more slides here -->
       </div>
     
+      <button class="prev-btn">&lt;</button>
+      <button class="next-btn">&gt;</button>
+    
+      <div class="pagination">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <!-- Add more dots for additional images -->
+      </div>
+    </div>
+    <div class="imgcontainer">
+      <div class="image-container">
+        <!-- Images will be added dynamically by JavaScript -->
+      </div>
+    </div>
       <div class="modal" id="modal">
         <div class="modal-content" id="modalContent">
           <span class="close" id="close">&times;</span>

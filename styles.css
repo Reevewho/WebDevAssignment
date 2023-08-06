@@ -44,6 +44,10 @@
   transition: font-size 0.3s;
  /* Add a smooth transition for font size changes */
 }
+.navbar a:visited{
+  text-decoration: none;
+  color: #36454F;
+}
 .navbar a:hover {
   font-size: 1.5em;
  /* Increase the font size on hover */
@@ -63,6 +67,7 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      font-size: 80%;
  }
 }
 .heroimg {
@@ -77,6 +82,36 @@
   background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimg.jpeg) no-repeat center center scroll;
   background-size: cover !important;
 }
+/* Responsive styles for screen widths up to 320px */
+@media only screen and (min-width : 320px) {
+  .heroimg {
+    background-image: url(images/heroimgsub1.png); /* Replace with smaller image for smaller screens */
+    height: 100vh; /* Adjust the height for smaller screens */
+    width: 100%;
+    top: 20px;
+    right: 20px;
+    background-size: cover
+  }
+}
+
+/* Responsive styles for larger screens */
+@media only screen and (min-width : 768px) {
+  .heroimg {
+    background-image: url(images/heroimgsub2.jpg); /* Replace with tablet-sized image for larger screens */
+    height: 100vh; /* Adjust the height for larger screens */
+    background-size: cover
+  }
+}
+
+/* Responsive styles for even larger screens */
+@media only screen and (min-width : 1200px) {
+  .heroimg {
+    background-image: url(images/heroimg.jpeg); /* Replace with desktop-sized image for even larger screens */
+    height: 100vh; /* Adjust the height for even larger screens */
+    background-size: cover
+  }
+}
+
 #heroimgh1 {
   font-style: normal;
   font-weight: bold;
@@ -112,6 +147,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   color: white;
+  text-align: center;
 }
 .followup1 {
   text-align: center;
@@ -149,11 +185,16 @@ body {
   background-size: cover;
 }
 .parallax2 {
- /* The image used */
-  background-image: url(images/Parallax5.png);
- /* Set a specific height */
+  background-image: url(images/Parallax9.jpg);
   min-height: 420px;
- /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax3 {
+  background-image: url(images/Parallax8.png);
+  min-height: 420px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -162,40 +203,10 @@ body {
 .followup3 {
   text-align: center;
   transform: translateY(150px);
+  color: whitesmoke;
  /* Adjust this value to move the element down by desired pixels */
  }
-/* Container for centering */
-.center-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
- /* Allow items to wrap when screen is small */
-  max-width: 1200px;
- /* Adjust the max-width as needed */
-  margin: 0 auto;
- /* Center the container horizontally */
-  padding: 20px;
- /* Add some spacing around the items */
-  margin-top: 70px;
-}
-/* Video container */
-.video-container {
-  flex: 1;
- /* Take up available space */
-  max-width: 800px;
- /* Adjust the max-width as needed */
-  margin-right: 20px;
- /* Add some spacing between video and text */
-}
-/* Text content */
-.vidtext {
-  flex: 1;
- /* Take up available space */
-  max-width: 400px;
- /* Adjust the max-width as needed */
-}
-button {
+ button {
   position: relative;
   display:block;
   height: 45px;
@@ -248,10 +259,12 @@ a:visited {
   text-align: center;
 }
 #learnmore {
-  margin-left: 286px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #viewmore {
-  margin-left: 877px;
+  margin-left: auto;
+  margin-right: auto;
 }
 footer {
   text-align: center;
@@ -283,96 +296,11 @@ footer {
   transform: scale(1.2);
  /* Increase the scale to 1.2 on hover */
 }
-* {
-  box-sizing: border-box;
-  align-items: center;
-  text-align: center;
-}
 .text {
   text-align: center;
-  margin: 30px 0;
-  padding: 20px;
 }
-img {
-  vertical-align: middle;
-}
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-  margin: 0 auto;
-  max-width: 60%;
-}
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-/* Position the "prev button" to the left */
-.prev {
-  left: 0;
- /* Set the left position to 0 */
-  border-radius: 3px 0 0 3px;
-}
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #D4AF37;
-}
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  color: white;
-  padding: 2px 16px;
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-.active, .demo:hover {
-  opacity: 1;
-}
+
+
 .contact-section {
   display: flex;
   justify-content: space-around;
@@ -397,16 +325,12 @@ img {
 .container {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 30%;
   margin: 0 auto;
   padding: 20px;
 }
 h1 {
   text-align: center;
-}
-.container {
-  margin: 10vh auto 20vh;
-  max-width: 600px;
 }
 .form {
   padding: 20px;
@@ -459,21 +383,21 @@ input[type="text"], input[type="tel"], textarea {
 }
 table.GeneratedTable {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #36454F;
   border-collapse: collapse;
   border-width: 2px;
-  border-color: #ddbb31;
+  border-color: #D4AF37;
   border-style: solid;
-  color: #000000;
+  color: white;
 }
 table.GeneratedTable td, table.GeneratedTable th {
   border-width: 2px;
-  border-color: #ddbb31;
+  border-color: #D4AF37;
   border-style: solid;
   padding: 3px;
 }
 table.GeneratedTable thead {
-  background-color: #ecbf36;
+  background-color: #D4AF37;
 }
 
 /* Style for the container that centers the image-container */
@@ -492,10 +416,9 @@ table.GeneratedTable thead {
 
 /* Style for individual image divs */
 .image-container div {
-  width: 500px;
-  height: 500px;
-  margin-right: -100px;
-  margin-top: -400px;
+  width: 60vw;
+  height: 60vh;
+  margin-right: -60vh;
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
@@ -541,9 +464,140 @@ table.GeneratedTable thead {
   text-align: center;
   font-size: 18px;
 }
+.googlemap {
+  align-items: center;
+  text-align: center;
+}
 
-/* Additional styling for the modal image, adjust as needed */
-#modalImage {
+.aboutme {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.aboutme h2 {
+  text-align: center;
+}
+
+.splide__slide img {
   width: 100%;
   height: auto;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 60vw;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.carousel-slider {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-slider img {
+  width: 100%;
+  height: auto;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  color: #fff;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+/* Add a class to style the slide container */
+.slide {
+  position: relative;
+}
+
+/* Position captions at the bottom and add some styling */
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box; /* Add this to include padding within the width */
+  text-align: center; /* Center the caption text */
+}
+
+/* Hide the captions by default */
+.slide .caption {
+  display: none;
+}
+
+#infocomm{
+  color:rgb(19, 168, 242)
+}
+
+#law{
+  color:rgb(109, 231, 143)
+}
+
+#math{
+  color:rgb(174, 81, 233)
+}
+
+#web{
+  color:rgb(237, 161, 20)
+}
+
+#ecs{
+  color:rgb(232, 113, 127)
+}
+
+#ffl{
+  color:rgb(189, 214, 231)
+}
+
+#prg{
+  color:rgb(185, 245, 245)
+}
+
+#fie{
+  color:rgb(255, 1, 1)
+}
+
+#pem{
+  color:greenyellow
 }

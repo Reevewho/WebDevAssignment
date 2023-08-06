@@ -35,37 +35,7 @@ if (isOnHomePage()) {
     const navbar = document.getElementById("navbar");
     navbar.classList.add("navbar-solid");
 }
-    
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("demo");
-    let captionText = document.getElementById("caption");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    // Remove the "active" class from all dots
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-  captionText.innerHTML = dots[slideIndex - 1].alt;
-  }
-
-  let slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-    
+      
 //form input storage
 function response() {
 
@@ -111,7 +81,7 @@ function addImagesToContainer() {
     container.innerHTML = ""; // Clear existing content before adding images
 
     // Increase the number of duplications to make the loop happen faster
-    const numberOfDuplications = 5; // You can adjust this value as needed
+    const numberOfDuplications = 20; // You can adjust this value as needed
     const duplicateImageUrls = [];
     for (let i = 0; i < numberOfDuplications; i++) {
       duplicateImageUrls.push(...imageUrls);
@@ -180,3 +150,48 @@ function addImagesToContainer() {
   }
 
   addImagesToContainer();
+
+  let slideIndex = 1;
+const slides = document.getElementsByClassName("carousel-slider")[0].children;
+const dots = document.getElementsByClassName("dot");
+
+function showSlides() {
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+    dots[i].classList.remove("active");
+  }
+
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  } else if (slideIndex < 1) {
+    slideIndex = slides.length;
+  }
+
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].classList.add("active");
+
+  // Show the caption of the current slide
+  const captions = slides[slideIndex - 1].querySelector(".caption");
+  captions.style.display = "block";
+}
+
+function plusSlides(n) {
+  slideIndex += n;
+  showSlides();
+}
+
+function currentSlide(n) {
+  slideIndex = n;
+  showSlides();
+}
+
+document.querySelector(".prev-btn").addEventListener("click", () => plusSlides(-1));
+document.querySelector(".next-btn").addEventListener("click", () => plusSlides(1));
+
+const dotsArray = Array.from(dots);
+dotsArray.forEach((dot, index) => {
+  dot.addEventListener("click", () => currentSlide(index + 1));
+});
+
+showSlides(); // To display the first slide
+setInterval(() => plusSlides(1), 3000); // Automatic sliding
