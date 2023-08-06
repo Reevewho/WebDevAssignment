@@ -85,11 +85,9 @@
 /* Responsive styles for screen widths up to 320px */
 @media only screen and (min-width : 320px) {
   .heroimg {
-    background-image: url(images/heroimgsub1.png); /* Replace with smaller image for smaller screens */
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimgsub1.png) no-repeat center center scroll;
     height: 100vh; /* Adjust the height for smaller screens */
     width: 100%;
-    top: 20px;
-    right: 20px;
     background-size: cover
   }
 }
@@ -97,7 +95,7 @@
 /* Responsive styles for larger screens */
 @media only screen and (min-width : 768px) {
   .heroimg {
-    background-image: url(images/heroimgsub2.jpg); /* Replace with tablet-sized image for larger screens */
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimgsub2.jpg) no-repeat center center scroll;
     height: 100vh; /* Adjust the height for larger screens */
     background-size: cover
   }
@@ -106,8 +104,7 @@
 /* Responsive styles for even larger screens */
 @media only screen and (min-width : 1200px) {
   .heroimg {
-    background-image: url(images/heroimg.jpeg); /* Replace with desktop-sized image for even larger screens */
-    height: 100vh; /* Adjust the height for even larger screens */
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimg.jpeg) no-repeat center center scroll; 
     background-size: cover
   }
 }
