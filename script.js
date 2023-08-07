@@ -76,12 +76,12 @@ let imageUrls = [
   {
     filename: "NGNLln.png",
     title: "No Game No Life",
-    description: "Another one of my favourite isekais where a gamer duo is dropped into a world where games are everything. Seeing their journey to world domination is interesting.",
+    description: "Another one of my favourite isekais where a gamer duo is dropped into a world where games are everything. Seeing their journey to the very top is interesting.",
   },
   {
     filename: "konosubaln.jpg",
     title: "Gods Blessings on this wonderful world",
-    description: "One of the funniest isekais novel ever, if not the funniest. The cast is very loveable and i feel like im part of the game whenever i read about their journeys.",
+    description: "One of the funniest isekai novels ever, if not the funniest. The cast is very loveable and i feel like im part of the gang whenever i read about their journeys.",
   },
   {
     filename: "Coteln.png",
@@ -91,12 +91,12 @@ let imageUrls = [
   {
     filename: "oregairuln.png",
     title: "My Teenage Romantic Comedy Snafu",
-    description: "One of my favourite slice of life novels due to its very relatable protagonist initially. I have since developed and matured with him as a person.",
+    description: "One of my favourite slice of life novels due to its very relatable protagonist initially. I have since developed and matured alongside him as a person.",
   },
   {
     filename: "chitoseln.png",
     title: "Chitose Is In The Ramune Bottle",
-    description: "A very interesting take on the slice of life genre with the concept of the novel revolving around 'Riajuus' aka Normies POV of the world",
+    description: "A very interesting take on the slice of life genre with the concept of the novel revolving around 'Riajuus' aka a Normie's POV of the world",
   },
   // Add more image filenames as needed
 ];
