@@ -85,7 +85,7 @@
 /* Responsive styles for screen widths up to 320px */
 @media only screen and (min-width : 320px) {
   .heroimg {
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimgsub1.png) no-repeat center center scroll;
+    background-image:url(images/heroimgsub1.png);
     height: 100vh; /* Adjust the height for smaller screens */
     width: 100%;
     background-size: cover
@@ -95,7 +95,7 @@
 /* Responsive styles for larger screens */
 @media only screen and (min-width : 768px) {
   .heroimg {
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 37%, rgba(0,0,0,0.65) 100%), url(images/heroimgsub2.jpg) no-repeat center center scroll;
+    background-image:url(images/heroimgsub2.jpg);
     height: 100vh; /* Adjust the height for larger screens */
     background-size: cover
   }
@@ -319,25 +319,21 @@ footer {
   color: white;
   font-size: 16px;
 }
-.container {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  max-width: 30%;
-  margin: 0 auto;
-  padding: 20px;
-}
 h1 {
   text-align: center;
 }
 .form {
   padding: 20px;
-  border: 1px solid #18c2fb;
-  background-color: #ffffff;
-  color: #000000;
+  border: 1px solid #D4AF37;
+  background-color: #36454F;
+  color: #fff;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 .form h2 {
   text-align: center;
-  color: #18c2fb;
+  color: #D4AF37;
   margin-top: 0;
 }
 .group {
@@ -348,12 +344,29 @@ label {
   font-weight: bold;
   margin-bottom: 5px;
 }
-input[type="text"], input[type="tel"], textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+.container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0 auto;
+  padding: 20px;
+  width: 80%;
+}
+
+/* Add media query for smaller screens (e.g., tablets and mobile devices) */
+@media (max-width: 768px) {
+  .form {
+    padding: 10px; /* Reduce padding on smaller screens */
+  }
+
+  .form h2 {
+    font-size: 24px; /* Adjust the font size of the form heading on smaller screens */
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  textarea {
+    font-size: 14px; /* Adjust the font size of form elements on smaller screens */
+  }
 }
 @media (max-width: 768px) {
   .form {
@@ -364,9 +377,9 @@ input[type="text"], input[type="tel"], textarea {
  }
 }
 .button-64 {
-  background-color: #18c2fb;
+  background-color: white;
   border: none;
-  color: white;
+  color: #36454F;
   padding: 12px 24px;
   text-align: center;
   text-decoration: none;
@@ -376,25 +389,61 @@ input[type="text"], input[type="tel"], textarea {
   cursor: pointer;
 }
 .button-64:hover {
-  background-color: #0e9bf0;
-}
-table.GeneratedTable {
-  width: 100%;
-  background-color: #36454F;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #D4AF37;
-  border-style: solid;
-  color: white;
-}
-table.GeneratedTable td, table.GeneratedTable th {
-  border-width: 2px;
-  border-color: #D4AF37;
-  border-style: solid;
-  padding: 3px;
-}
-table.GeneratedTable thead {
   background-color: #D4AF37;
+  color: whitesmoke;
+}
+
+.schedule{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity:0;
+  margin-bottom:5%;
+  overflow-x:auto;
+}
+
+.schedule td{
+  text-align: center;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+@media(max-width:768px){
+  td{font-size:12px;}
+}
+.clicked{
+  animation:fade-in 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes fade-in {   
+  0% { opacity: 0; visibility: visible; }  
+   100% { opacity: 1; visibility: visible; } }
+.col{
+  transition:background-color 0.3s, color 0.3s
+}
+
+.col:hover{
+  background-color: white;
+  color:black;
+}
+
+.schedule td:hover{
+  transition: filter 0.3s; filter:brightness(110)
+}
+
+@media screen and (max-width: 768px) {
+  
+  .schedule{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity:0;
+    margin-bottom:5%;
+    flex-shrink:1
+  }
+  
 }
 
 /* Style for the container that centers the image-container */
@@ -404,6 +453,7 @@ table.GeneratedTable thead {
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  transform: translateY(-30vh);
 }
 
 /* Style for the image container */
@@ -413,37 +463,52 @@ table.GeneratedTable thead {
 
 /* Style for individual image divs */
 .image-container div {
-  width: 60vw;
-  height: 60vh;
-  margin-right: -60vh;
+  width: 30vw;
+  height: 30vh;
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10vh;
+}
 
-/* Style for the modal popup */
+#modalImage {
+  max-height: 100%;
+  max-width: 50%; /* Set the maximum width for the image */
+  object-fit: contain; /* Ensure the image fits within the container */
+  margin-right: 5vw; /* Add some spacing between the image and the content */
+}
+
+#modalTitle {
+  font-size: 1.5rem; /* Adjust the title font size as needed */
+  font-weight: bold; /* Add bold font to the title */
+  margin-bottom: 10vh;
+}
+
+#modalDescription {
+  margin-top: 15vh;
+  margin-right: 10w;
+}
+
+/* Additional styles to center the modal */
 .modal {
-  display: none; /* Hide the modal by default */
+  display: none;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
+  margin-top: 5vh;
 }
-
-/* Style for the modal content */
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fefefe;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 /* Style for the close button */
 .close {
   position: absolute;
@@ -453,17 +518,23 @@ table.GeneratedTable thead {
   font-weight: bold;
   cursor: pointer;
 }
-
-/* Additional styling for the modal content, adjust as needed */
-.modal-content p {
-  margin: 0;
-  padding: 10px 0;
-  text-align: center;
-  font-size: 18px;
-}
-.googlemap {
+.googlemap iframe {
+  width: 60%; /* Adjust the width to fill the container */
+  height: 80vh; /* Set an initial height for the map */
   align-items: center;
   text-align: center;
+}
+
+/* Media query for smaller screens (e.g., tablets and mobile devices) */
+@media (max-width: 767px) {
+  .contact-section {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    max-width: 100%; /* Adjust the max width for the container */
+  }
+
+  .googlemap iframe {
+    height: 200px; /* Adjust the height of the map for smaller screens */
+  }
 }
 
 .aboutme {
@@ -598,3 +669,87 @@ table.GeneratedTable thead {
 #pem{
   color:greenyellow
 }
+
+.flip-card-container {
+    display: flex;
+    justify-content: center; /* Center horizontally within the container */
+    text-align: center;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between flip cards as needed */
+  }
+  /* Styles for the outer container of the flip card */
+  .flip-card {
+    background-color: transparent; /* Transparent background */
+    width: 40vw;                  /* Set width of the card */
+    height: 20vh;                 /* Set height of the card */
+    perspective: 10000px;         /* Perspective for 3D effect */
+  }
+
+  /* Styles for the inner container of the flip card */
+  .flip-card-inner {
+    position: relative;           /* Positioning context for children */
+    width: 100%;                  /* Full width */
+    height: 100%;                 /* Full height */
+    text-align: center;           /* Center text */
+    transition: transform 0.6s;  /* Transition for flip effect */
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1); /* Shadow for card */
+  }
+  
+  /* Flip effect on hover */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);   /* Rotate card on Y-axis */
+  }
+  
+  /* Common styles for the front and back of the flip card */
+  .flip-card-front, .flip-card-back {
+    position: absolute;           /* Absolute positioning */
+    width: 100%;                  /* Full width */
+    height: 100%;                 /* Full height */
+    backface-visibility: hidden;  /* Hide the back of the element */
+  }
+  
+  /* Styles for the front of the flip card */
+  .flip-card-front {
+    background-color: #bbb;      /* Background color */
+    color: black;                /* Text color */
+    z-index: 2;                  /* Stack order */
+    display: flex;               /* Flexbox for centering content */
+    align-items: center;         /* Center content vertically */
+    justify-content: center;     /* Center content horizontally */
+  }
+  
+  /* Styles for the back of the flip card */
+  .flip-card-back {
+    background-color: #333;      /* Background color */
+    color: white;                /* Text color */
+    transform: rotateY(180deg);  /* Rotate to show when card is flipped */
+    z-index: 1;                  /* Stack order */
+  }
+
+  /* Media query for smaller screens (mobile devices) */
+  @media (max-width: 767px) {
+    .flip-card-container {
+      flex-wrap: wrap; /* Allow flex items to wrap on smaller screens */
+      gap: 10px; /* Adjust the gap between flip cards for mobile devices */
+    }
+
+    .flip-card {
+      width: 90vw; /* Adjust the width of the card for mobile devices */
+      height: 15vh; /* Adjust the height of the card for mobile devices */
+    }
+  }
+
+  /* Media query for smaller screens (e.g., tablets and mobile devices) */
+@media (max-width: 768px) {
+  .form {
+    max-width: 60%; /* Adjust the max width for the form on smaller screens */
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  textarea {
+    font-size: 14px; /* Adjust the font size of form elements on smaller screens */
+  }
+}
+
