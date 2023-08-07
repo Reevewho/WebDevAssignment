@@ -571,7 +571,7 @@ label {
 
 .prev-btn,
 .next-btn {
-  position: absolute;
+  position:absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 40px;
@@ -584,11 +584,11 @@ label {
 }
 
 .prev-btn {
-  left: 10px;
+  right: 60vw;
 }
 
 .next-btn {
-  right: 10px;
+  left: 60vw;
 }
 
 .pagination {
@@ -752,4 +752,5 @@ label {
     font-size: 14px; /* Adjust the font size of form elements on smaller screens */
   }
 }
+
 
